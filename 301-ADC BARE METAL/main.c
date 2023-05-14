@@ -2,7 +2,7 @@
 #include "gpio.h"
 
 
-int adcData, Volatage;
+int adcData, d_mm, V_mV;
 
 int main(void)
 {
@@ -31,7 +31,8 @@ ADC1->CR2 |= 1;
 		ADC1->CR2 |= (1<<30);
 		while(ADC1->SR & 2){}
 		adcData = ADC1->DR;
-		Volatage = (3300*adcData)/4095;
+		V_mV = (3300*adcData)/4095;
+		d_mm = (30*adcData)/4095;
 	
 	}
 	
