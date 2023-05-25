@@ -29,7 +29,7 @@ ADC1->CR2 |= 1;
 	while(1){
 	/// Reading operation
 		ADC1->CR2 |= (1<<30);
-		while(ADC1->SR & 2){}
+		while((ADC1->SR & 2)==0){}
 		adcData = ADC1->DR;
 		V_mV = (3300*adcData)/4095;
 		d_mm = (30*adcData)/4095;
